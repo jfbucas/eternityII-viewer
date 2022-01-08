@@ -1,0 +1,137 @@
+
+puzzles[ nb_puzzles ] = "brendan/pieces_17x07.txt.js,Brendan 17x07".split( splitreg ); nb_puzzles++;
+
+if ( puzzle == "brendan/pieces_17x07.txt.js" ) {
+
+board_w = 17;
+board_h = 7;
+
+
+pieces[ p ] = "0,0,1,1".split( splitreg ); p++;
+pieces[ p ] = "0,0,1,3".split( splitreg ); p++;
+pieces[ p ] = "0,0,1,4".split( splitreg ); p++;
+pieces[ p ] = "0,0,4,3".split( splitreg ); p++;
+pieces[ p ] = "0,1,5,1".split( splitreg ); p++;
+pieces[ p ] = "0,1,5,2".split( splitreg ); p++;
+pieces[ p ] = "0,1,7,1".split( splitreg ); p++;
+pieces[ p ] = "0,1,7,2".split( splitreg ); p++;
+pieces[ p ] = "0,1,9,1".split( splitreg ); p++;
+pieces[ p ] = "0,1,10,1".split( splitreg ); p++;
+pieces[ p ] = "0,1,10,3".split( splitreg ); p++;
+pieces[ p ] = "0,1,15,2".split( splitreg ); p++;
+pieces[ p ] = "0,2,6,3".split( splitreg ); p++;
+pieces[ p ] = "0,2,8,3".split( splitreg ); p++;
+pieces[ p ] = "0,2,8,4".split( splitreg ); p++;
+pieces[ p ] = "0,2,9,1".split( splitreg ); p++;
+pieces[ p ] = "0,2,9,2".split( splitreg ); p++;
+pieces[ p ] = "0,2,9,4".split( splitreg ); p++;
+pieces[ p ] = "0,2,11,4".split( splitreg ); p++;
+pieces[ p ] = "0,2,14,2".split( splitreg ); p++;
+pieces[ p ] = "0,2,14,4".split( splitreg ); p++;
+pieces[ p ] = "0,2,15,1".split( splitreg ); p++;
+pieces[ p ] = "0,2,15,2".split( splitreg ); p++;
+pieces[ p ] = "0,3,5,1".split( splitreg ); p++;
+pieces[ p ] = "0,3,5,2".split( splitreg ); p++;
+pieces[ p ] = "0,3,6,4".split( splitreg ); p++;
+pieces[ p ] = "0,3,7,2".split( splitreg ); p++;
+pieces[ p ] = "0,3,8,1".split( splitreg ); p++;
+pieces[ p ] = "0,3,8,4".split( splitreg ); p++;
+pieces[ p ] = "0,3,10,3".split( splitreg ); p++;
+pieces[ p ] = "0,3,12,2".split( splitreg ); p++;
+pieces[ p ] = "0,3,13,1".split( splitreg ); p++;
+pieces[ p ] = "0,3,14,3".split( splitreg ); p++;
+pieces[ p ] = "0,3,15,4".split( splitreg ); p++;
+pieces[ p ] = "0,4,6,1".split( splitreg ); p++;
+pieces[ p ] = "0,4,7,3".split( splitreg ); p++;
+pieces[ p ] = "0,4,7,4".split( splitreg ); p++;
+pieces[ p ] = "0,4,8,2".split( splitreg ); p++;
+pieces[ p ] = "0,4,10,2".split( splitreg ); p++;
+pieces[ p ] = "0,4,10,3".split( splitreg ); p++;
+pieces[ p ] = "0,4,11,4".split( splitreg ); p++;
+pieces[ p ] = "0,4,12,4".split( splitreg ); p++;
+pieces[ p ] = "0,4,14,3".split( splitreg ); p++;
+pieces[ p ] = "0,4,15,3".split( splitreg ); p++;
+pieces[ p ] = "5,5,6,9".split( splitreg ); p++;
+pieces[ p ] = "5,5,6,13".split( splitreg ); p++;
+pieces[ p ] = "5,5,8,10".split( splitreg ); p++;
+pieces[ p ] = "5,6,9,13".split( splitreg ); p++;
+pieces[ p ] = "5,6,14,6".split( splitreg ); p++;
+pieces[ p ] = "5,7,10,15".split( splitreg ); p++;
+pieces[ p ] = "5,7,11,6".split( splitreg ); p++;
+pieces[ p ] = "5,8,6,13".split( splitreg ); p++;
+pieces[ p ] = "5,8,14,7".split( splitreg ); p++;
+pieces[ p ] = "5,10,5,11".split( splitreg ); p++;
+pieces[ p ] = "5,10,5,13".split( splitreg ); p++;
+pieces[ p ] = "5,10,8,9".split( splitreg ); p++;
+pieces[ p ] = "5,11,9,13".split( splitreg ); p++;
+pieces[ p ] = "5,11,13,15".split( splitreg ); p++;
+pieces[ p ] = "5,12,7,10".split( splitreg ); p++;
+pieces[ p ] = "5,12,10,12".split( splitreg ); p++;
+pieces[ p ] = "5,12,11,12".split( splitreg ); p++;
+pieces[ p ] = "5,13,14,8".split( splitreg ); p++;
+pieces[ p ] = "5,14,6,10".split( splitreg ); p++;
+pieces[ p ] = "5,14,9,13".split( splitreg ); p++;
+pieces[ p ] = "5,14,12,14".split( splitreg ); p++;
+pieces[ p ] = "5,14,13,14".split( splitreg ); p++;
+pieces[ p ] = "5,15,12,7".split( splitreg ); p++;
+pieces[ p ] = "6,6,7,11".split( splitreg ); p++;
+pieces[ p ] = "6,6,12,8".split( splitreg ); p++;
+pieces[ p ] = "6,6,13,11".split( splitreg ); p++;
+pieces[ p ] = "6,7,11,10".split( splitreg ); p++;
+pieces[ p ] = "6,7,15,13".split( splitreg ); p++;
+pieces[ p ] = "6,9,8,8".split( splitreg ); p++;
+pieces[ p ] = "6,10,7,7".split( splitreg ); p++;
+pieces[ p ] = "6,10,8,12".split( splitreg ); p++;
+pieces[ p ] = "6,11,9,13".split( splitreg ); p++;
+pieces[ p ] = "6,11,13,11".split( splitreg ); p++;
+pieces[ p ] = "6,12,6,14".split( splitreg ); p++;
+pieces[ p ] = "6,12,10,7".split( splitreg ); p++;
+pieces[ p ] = "6,12,13,12".split( splitreg ); p++;
+pieces[ p ] = "6,12,15,7".split( splitreg ); p++;
+pieces[ p ] = "6,13,10,13".split( splitreg ); p++;
+pieces[ p ] = "6,14,8,11".split( splitreg ); p++;
+pieces[ p ] = "6,15,15,11".split( splitreg ); p++;
+pieces[ p ] = "7,8,8,11".split( splitreg ); p++;
+pieces[ p ] = "7,8,15,10".split( splitreg ); p++;
+pieces[ p ] = "7,9,15,9".split( splitreg ); p++;
+pieces[ p ] = "7,10,8,13".split( splitreg ); p++;
+pieces[ p ] = "7,10,10,9".split( splitreg ); p++;
+pieces[ p ] = "7,10,15,9".split( splitreg ); p++;
+pieces[ p ] = "7,11,9,8".split( splitreg ); p++;
+pieces[ p ] = "7,11,15,8".split( splitreg ); p++;
+pieces[ p ] = "7,12,11,13".split( splitreg ); p++;
+pieces[ p ] = "7,13,8,14".split( splitreg ); p++;
+pieces[ p ] = "7,13,9,8".split( splitreg ); p++;
+pieces[ p ] = "7,13,14,11".split( splitreg ); p++;
+pieces[ p ] = "7,14,12,8".split( splitreg ); p++;
+pieces[ p ] = "7,15,9,9".split( splitreg ); p++;
+pieces[ p ] = "7,15,14,9".split( splitreg ); p++;
+pieces[ p ] = "8,8,8,9".split( splitreg ); p++;
+pieces[ p ] = "8,9,11,11".split( splitreg ); p++;
+pieces[ p ] = "8,11,13,15".split( splitreg ); p++;
+pieces[ p ] = "8,12,13,14".split( splitreg ); p++;
+pieces[ p ] = "8,12,14,9".split( splitreg ); p++;
+pieces[ p ] = "8,15,15,13".split( splitreg ); p++;
+pieces[ p ] = "9,10,9,12".split( splitreg ); p++;
+pieces[ p ] = "9,12,10,12".split( splitreg ); p++;
+pieces[ p ] = "9,12,14,12".split( splitreg ); p++;
+pieces[ p ] = "9,13,10,15".split( splitreg ); p++;
+pieces[ p ] = "9,13,12,11".split( splitreg ); p++;
+pieces[ p ] = "9,14,12,15".split( splitreg ); p++;
+pieces[ p ] = "9,15,11,11".split( splitreg ); p++;
+pieces[ p ] = "9,15,15,10".split( splitreg ); p++;
+pieces[ p ] = "10,14,14,11".split( splitreg ); p++;
+pieces[ p ] = "10,15,12,13".split( splitreg ); p++;
+pieces[ p ] = "10,15,15,11".split( splitreg ); p++;
+pieces[ p ] = "11,12,14,14".split( splitreg ); p++;
+pieces[ p ] = "11,14,15,13".split( splitreg ); p++;
+pieces[ p ] = "12,14,14,13".split( splitreg ); p++;
+
+// piece,space,rotation
+fixed[ f ] = "0,0,1".split( splitreg ); f++;
+
+nb_pieces = p;
+nb_fixed = f;
+
+}
+

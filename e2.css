@@ -1,0 +1,357 @@
+
+body {
+	/*background-image: url('img/background.png');*/
+	/*background-image: url('img/crosswordStrong.png');*/
+	/*background-image: url('img/TexturedBackground.jpg');*/
+
+	/* https://www.transparenttextures.com/ */
+	background-color: #444;
+	background-image: url('img/fabric.png');
+
+	/* Any Text */
+	color: white;
+	font-family: Sans-serif;
+	font-size: 20px;
+        text-shadow: 0px 0px 1px #222;
+}
+
+#Main {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 100%;
+	height: 90%;
+}
+
+#Title-Horizontal {
+	position:fixed;
+	top:10px;
+	left:96px;
+
+	z-index:+1;
+	width:360pt;
+	height:40pt;
+	background-size: 360pt 40pt;
+	background-image: url('img/EternityII_Title-Horizontal.svg');
+	background-repeat: no-repeat;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+	/*filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7)) blur(var(--value, 5px));*/
+	display: none;
+	cursor: pointer;
+}
+
+#Title-Vertical {
+	position:fixed;
+	top:64px;
+	left:10px;
+
+	z-index:+1;
+	width:40pt;
+	height:360pt;
+	background-size: 360pt 40pt;
+	background-image: url('img/EternityII_Title-Vertical.svg');
+	background-repeat: no-repeat;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+	display: none;
+	/*filter: blur(var(--value, 1rem)); --value: 8px;*/
+	cursor: pointer;
+}
+
+/*
+#Title {
+	position:fixed;
+	top:64px;
+	left:10px;
+
+	z-index:+1;
+	width:40pt;
+	height:360pt;
+	background-image: url('img/EternityII_Title.svg');
+	background-repeat: no-repeat;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+}
+*/
+
+.verified {
+	position:absolute;
+	z-index:+1;
+	background-image: url('img/Not.svg');
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+}
+
+#Verified-Horizontal-Before {
+/*	left:-30pt;
+	top:10pt;*/
+	/*width:20pt;
+	height:20pt;
+	background-size: 20pt;*/
+}
+#Verified-Horizontal-After {
+/*	right:-30pt;
+	top:10pt;*/
+	/*width:20pt;
+	height:20pt;
+	background-size: 20pt;*/
+}
+
+#Verified-Vertical-Before {
+	bottom:-30pt;
+	left:10pt;
+	/*width:20pt;
+	height:20pt;
+	background-size: 20pt;*/
+}
+#Verified-Vertical-After {
+	top:-20pt;
+	left:10pt;
+	/*width:20pt;
+	height:20pt;
+	background-size: 20pt;*/
+}
+
+#Board {
+	position: fixed;
+	/*top:32px;
+	left:32px;*/
+	/*margin: 0px auto; */
+	/*margin-top: 96px;*/
+	/*margin-left: 64px;*/
+	display: block;
+	border: 10px black solid;
+	
+	border-image: repeating-linear-gradient(
+		45deg,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0.8) 1px,
+		rgba(0, 0, 0, 0.9) 2px
+		) 10;
+
+	/*-webkit-border-image: url(border.png) 30 round; /* Safari 3.1-5 */
+	/*-o-border-image: url(border.png) 30 round; /* Opera 11-12.1 */
+	/*border: 10px;*/
+	/*border-image: url('img/crosswordStrong.png') 10;*/
+	border-spacing: 0px;
+	background-color: #888888;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+} 
+
+#ControlsShow {
+	position:fixed;
+	top:10px;
+	left:10px;
+	background-color: #888888;
+	width:32px;
+	height:32px;
+	text-align: center;
+	display: block;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 24px;
+	font-weight: bold;
+	z-index: +3;
+
+	border: 5px black solid;
+	border-image: repeating-linear-gradient(
+		45deg,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0.8) 1px,
+		rgba(0, 0, 0, 0.9) 2px
+		) 10;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+}
+#ControlsClose {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:32px;
+	height:32px;
+	text-align: center;
+	display: block;
+	cursor: pointer;
+	vertical-align: middle;
+	font-size: 24px;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+}
+
+#Controls {
+	/*float: right;*/
+	position:fixed;
+	top:10px;
+	left:10px;
+	z-index: +4;
+	background-color: #888888;
+	width:256px;
+	margin-right:  auto;
+	margin-left:  auto;
+	text-align: center;
+	overflow: hidden;
+	display: none;
+	border: 5px black solid;
+	border-spacing: 0px;
+	border-image: repeating-linear-gradient(
+		45deg,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0.8) 1px,
+		rgba(0, 0, 0, 0.9) 2px
+		) 10;
+	filter: drop-shadow(9px 9px 9px rgba(0,0,0,0.7));
+	overflow: scroll;
+}
+
+
+.piecenumber,
+#tiles2text,
+#tiles4text,
+#tiles8text,
+#tiles16text,
+#tiles32text,
+#tiles64text,
+#tiles128text {
+	filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.9));
+}
+
+#Score {
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	z-index: +10;
+        color: rgba(255, 255, 255, 0.4);
+	filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.9));
+}
+
+
+#Paster {
+	/*display: block;*/
+	/*margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right:  auto;
+	margin-left:  auto;
+	*/
+	width:150px;
+	height:32px;
+	color: black;
+	font-family: Sans-serif;
+	font-size: 22px;
+}
+
+#Log {
+	/*display: block;*/
+	/*margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right:  auto;
+	margin-left:  auto;
+	*/
+	width:1px;
+	height:1px;
+	color: black;
+	font-family: Sans-serif;
+	font-size: 10px;
+	position:fixed;
+	bottom:0px;
+	right:0px;
+}
+
+#Motifs {
+	margin: 0px auto; 
+	display: block;
+	border: 1px black solid;
+	
+	border-image: repeating-linear-gradient(
+		45deg,
+		rgba(0, 0, 0, 0.8),
+		rgba(0, 0, 0, 0.8) 1px,
+		rgba(0, 0, 0, 0.9) 2px
+		) 10;
+
+	/*-webkit-border-image: url(border.png) 30 round; /* Safari 3.1-5 */
+	/*-o-border-image: url(border.png) 30 round; /* Opera 11-12.1 */
+	/*border: 10px;*/
+	/*border-image: url('img/crosswordStrong.png') 10;*/
+	border-spacing: 0px;
+	background-color: #666666;
+}
+
+.motif {
+	cursor: pointer;
+}
+
+
+.hide {
+	visibility: hidden;
+}
+.seek {
+	visibility: visible;
+}
+
+
+#Buttons {
+	margin-right:  auto;
+	margin-left:  auto;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#ButtonPPF_SVG {
+	margin-right:  auto;
+	margin-left:  auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width:70%;
+	height:auto;
+	filter: drop-shadow(0px 0px 1px rgba(64,64,64,0.9));
+}
+
+.button_start_color {
+	fill: lightgreen;
+}
+.button_start_color:hover {
+	fill: #72BA72;
+}
+.button_pause_color {
+	fill: lightblue;
+}
+.button_pause_color:hover {
+	fill: #86A7B3;
+}
+.button_found_color {
+	fill: yellow;
+}
+
+.checkbox {
+	width:20px;
+}
+.button {
+	width:70%;
+}
+.new_hash {
+	width:70%;
+}
+	
+.select_puzzle {
+}
+
+
+
+.piece_type_fixed {
+	background: repeating-linear-gradient(
+		45deg,
+		rgba(0, 0, 0, 0.2),
+		rgba(0, 0, 0, 0.2) 10px,
+		rgba(0, 0, 0, 0.3) 10px,
+		rgba(0, 0, 0, 0.3) 20px
+		)
+}
+
+
+.piece_shadow {
+	-moz-box-shadow:    inset 0 0 10px #000000;
+	-webkit-box-shadow: inset 0 0 10px #000000;
+	box-shadow:         inset 0 0 10px #000000;
+}
+
+.help {
+	font-size: 10px;
+	cursor: pointer;
+}
+

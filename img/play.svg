@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+<g>
+<path id="play-circle" d="M500,10C229.4,10,10,229.4,10,500c0,270.6,219.4,490,490,490s490-219.4,490-490C990,229.4,770.6,10,500,10L500,10z M500,920C268.4,920,80,731.6,80,500C80,268.4,268.4,80,500,80s420,188.4,420,420C920,731.6,731.6,920,500,920L500,920z"
+style="fill:lightgray"
+/>
+<path id="play-symbol" d="M410.4,725.2c-2.7,0-5.4-0.6-7.9-1.9c-5.9-3-9.6-9-9.6-15.6v-400c0-6.5,3.6-12.5,9.4-15.5c5.7-3,12.7-2.6,18.1,1.1l280,194.8c4.6,3.2,7.5,8.5,7.5,14.1c0.1,5.7-2.6,11-7.1,14.3l-280,205.2C417.7,724.1,414.1,725.2,410.4,725.2z"
+style="fill:lightgreen"
+/></g>
+</svg>
