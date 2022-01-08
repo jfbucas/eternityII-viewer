@@ -112,9 +112,9 @@ function printSpace( space ) {
 	c3.setAttributeNS( null, 'visibility', ((show_conflicts && board_conflicts[ space*4+EDGE_LEFT  ])?"visible":"hidden" ));
 
 	// Piece Number overlay and text
-	var c_use = document.getElementById("piecenumberoverlay"+space);
-	c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#darkoverlay" );
-	c_use.setAttributeNS( null, 'visibility', (show_piecenumber?"visible":"hidden") );
+	//var c_use = document.getElementById("piecenumberoverlay"+space);
+	//c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#darkoverlay" );
+	//c_use.setAttributeNS( null, 'visibility', (show_piecenumber?"visible":"hidden") );
 	if (board_pieces !== undefined) {
 		// Negative numbers will be in black
 		if (board_pieces[space] >= 0) {
@@ -130,9 +130,9 @@ function printSpace( space ) {
 
 	// Custom text
 	if (board_custom !== undefined) {
-		var c_use = document.getElementById("piecenumberoverlay"+space);
-		c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#darkoverlay" );
-		c_use.setAttributeNS( null, 'visibility', "visible" );
+		//var c_use = document.getElementById("piecenumberoverlay"+space);
+		//c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#darkoverlay" );
+		//c_use.setAttributeNS( null, 'visibility', "visible" );
 		var c_use = document.getElementById("customspace"+space);
 		c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#customspacetext"+space );
 		c_use.setAttributeNS( null, 'visibility', "visible" );
@@ -144,13 +144,18 @@ function printBoard() {
 	for( s = 0; s < board_w*board_h; s ++)
 		printSpace( s );
 
+	var show_puzzle_overlay = show_piecenumber | (board_custom !== undefined);
 	for (n = 0; n < 8; n++) {
+		show_puzzle_overlay = show_puzzle_overlay | show_tiles[n];
 		var b = (show_tiles[n]?"visible":"hidden");
 		var tl = $i("tiles"+(1<<n));
 		var tt = $i("tiles"+(1<<n)+"text");
 		tl.setAttributeNS( null, 'visibility', b );
 		tt.setAttributeNS( null, 'visibility', b );
 	}
+
+	var c_use = $i("puzzledarkoverlay");
+	c_use.setAttributeNS( null, 'visibility', (show_puzzle_overlay?"visible":"hidden") );
 	
 	canvas = $i("Board");
 	if (show_coordinates) {
@@ -724,17 +729,17 @@ function build_page( action ) {
 
 
 		// Dark overlay
-		var fixedtypesvg = document.createElementNS( xmlns, 'rect'); 
-		fixedtypesvg.setAttributeNS( null, "id", "darkoverlay");
-		fixedtypesvg.setAttributeNS( null, "width" , "256");
-		fixedtypesvg.setAttributeNS( null, "height", "256");
-		fixedtypesvg.setAttributeNS( null, "fill", "black");
-		fixedtypesvg.setAttributeNS( null, "fill-opacity", "0.5");
-		fixedtypesvg.setAttributeNS( null, 'x', 0 );
-		fixedtypesvg.setAttributeNS( null, 'y', 0 );
-		fixedtypesvg.setAttributeNS( null, 'rx', 0 );
-		fixedtypesvg.setAttributeNS( null, 'ry', 0 );
-		c_defs.appendChild( fixedtypesvg );
+		//var fixedtypesvg = document.createElementNS( xmlns, 'rect'); 
+		//fixedtypesvg.setAttributeNS( null, "id", "darkoverlay");
+		//fixedtypesvg.setAttributeNS( null, "width" , "256");
+		//fixedtypesvg.setAttributeNS( null, "height", "256");
+		//fixedtypesvg.setAttributeNS( null, "fill", "black");
+		//fixedtypesvg.setAttributeNS( null, "fill-opacity", "0.5");
+		//fixedtypesvg.setAttributeNS( null, 'x', 0 );
+		//fixedtypesvg.setAttributeNS( null, 'y', 0 );
+		//fixedtypesvg.setAttributeNS( null, 'rx', 0 );
+		//fixedtypesvg.setAttributeNS( null, 'ry', 0 );
+		//c_defs.appendChild( fixedtypesvg );
 
 		// Texture overlay
 		var fixedtypesvg = document.createElementNS( xmlns, 'rect'); 
@@ -886,6 +891,7 @@ function build_page( action ) {
 		canvas.appendChild( c_defs );
 
 
+
 		// Conflict
 		var conflict = document.createElementNS( xmlns, 'g' );
 		conflict.setAttributeNS( null, "id", "conflict");
@@ -899,8 +905,6 @@ function build_page( action ) {
 		conflictp.setAttributeNS( null, "stroke-width", "32");
 		conflict.appendChild( conflictp );
 		c_defs.appendChild( conflict );
-
-
 
 
 		// Define the motifs and conflicts on each space of the board
@@ -946,6 +950,25 @@ function build_page( action ) {
 			m = "17"; // White
 			
 
+		}}
+
+		// Puzzle Dark overlay that covers the whole puzzle
+		var puzzledarkoverlaysvg = document.createElementNS( xmlns, 'rect'); 
+		puzzledarkoverlaysvg.setAttributeNS( null, "id", "puzzledarkoverlay");
+		puzzledarkoverlaysvg.setAttributeNS( null, "width" , 256*(board_w));
+		puzzledarkoverlaysvg.setAttributeNS( null, "height", 256*(board_h));
+		puzzledarkoverlaysvg.setAttributeNS( null, "fill", "black");
+		puzzledarkoverlaysvg.setAttributeNS( null, "fill-opacity", "0.5");
+		puzzledarkoverlaysvg.setAttributeNS( null, 'x', 0 );
+		puzzledarkoverlaysvg.setAttributeNS( null, 'y', 0 );
+		puzzledarkoverlaysvg.setAttributeNS( null, 'rx', 0 );
+		puzzledarkoverlaysvg.setAttributeNS( null, 'ry', 0 );
+		canvas.appendChild( puzzledarkoverlaysvg );
+
+		for (y = 0; y < board_h; y++ ) {
+		for (x = 0; x < board_w; x++ ) {
+			space = x + y*board_w;
+
 			// Piece type
 			var c_use = document.createElementNS( xmlns, 'use' );
 			c_use.setAttributeNS( null, "id", "piecetype"+space );
@@ -955,15 +978,14 @@ function build_page( action ) {
 			c_use.setAttributeNS( null, 'visibility', "hidden" );
 			canvas.appendChild( c_use );
 
-
 			// Piece number dark overlay
-			var c_use = document.createElementNS( xmlns, 'use' );
-			c_use.setAttributeNS( null, "id", "piecenumberoverlay"+space );
-			c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#fixedtype" );
-			c_use.setAttributeNS( null, 'x', x*256 );
-			c_use.setAttributeNS( null, 'y', y*256 );
-			c_use.setAttributeNS( null, 'visibility', "hidden" );
-			canvas.appendChild( c_use );
+			//var c_use = document.createElementNS( xmlns, 'use' );
+			//c_use.setAttributeNS( null, "id", "piecenumberoverlay"+space );
+			//c_use.setAttributeNS( 'http://www.w3.org/1999/xlink', "xlink:href", "#fixedtype" );
+			//c_use.setAttributeNS( null, 'x', x*256 );
+			//c_use.setAttributeNS( null, 'y', y*256 );
+			//c_use.setAttributeNS( null, 'visibility', "hidden" );
+			//canvas.appendChild( c_use );
 
 			// Piece Texture
 			var c_use = document.createElementNS( xmlns, 'use' );
@@ -1060,6 +1082,7 @@ function build_page( action ) {
 			canvas.appendChild( c_use );
 		}}
 
+
 		// Grid Lines
 		// From http://upload.wikimedia.org/wikipedia/commons/d/d5/Chess_Board.svg
 		var gridsvg = document.createElementNS( xmlns, 'path'); 
@@ -1137,6 +1160,7 @@ function build_page( action ) {
 			canvas.appendChild( tilestextsvg );
 			
 		}
+
 
 
 		document.body.appendChild(canvas);
