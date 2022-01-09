@@ -2,7 +2,7 @@
 
 This is the help you can obtain in your web browser's console (F12)
 
-'''
+```
 =======[ How to use ]================================================================================
 The URL takes the following parameters, either as part of the query string or the location hash
   o  puzzle       -> The name of the puzzle
@@ -37,4 +37,4 @@ puzzle=Sample_4x4&board_w=4&board_h=4&board_edges=ajjaajojaetjaaeejoeaootottooea
   o   1-9  : toggle the tiles
   o    h   : print help
 ====================================================================================================
-'''
+```
