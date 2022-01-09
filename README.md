@@ -1,37 +1,40 @@
-## Welcome to GitHub Pages
+## Eternity II viewer
 
-You can use the [editor on GitHub](https://github.com/jfbucas/eternityII-viewer/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+This is the help you can obtain in your web browser's console (F12)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+'''
+=======[ How to use ]================================================================================
+The URL takes the following parameters, either as part of the query string or the location hash
+  o  puzzle       -> The name of the puzzle
+  o  board_w      -> The width of the puzzle
+  o  board_h      -> The height of the puzzle
+  o  board_edges  -> The edges for all pieces ( a:0, b:1, ... )
+  o  board_types  -> The type of each piece (a:None, b:Corner, c:Border, d:Center, e:Fixed) ; Optional
+  o  board_pieces -> The piece numbers ; 3 digits integer for each piece ; Optional
+  o  board_custom -> A custom text displayed on each space, separated by * (eg:rotation); Optional
+  ----
+  o  show_conflicts   -> 1 for true else false; Optional
+  o  show_piecenumber -> 1 for true else false; Optional
+  o  show_piecetype   -> 1 for true else false; Optional
+  o  show_coordinates -> 1 for true else false; Optional
+====================================================================================================
 
-### Markdown
+For example, try to paste:
+puzzle=Sample_4x4&board_w=4&board_h=4&board_edges=ajjaajojaetjaaeejoeaootottooeajteojattoootttjajtjeaaoeaeteaejaae&board_pieces=000001002003004005006007008009010011012013014015&board_types=bccbcddccddcbccb
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+=======[ Functions ]================================================================================
+  o  export2c() : will print a C-style array
+====================================================================================================
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jfbucas/eternityII-viewer/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+=======[ Shortcuts ]================================================================================
+  o  space : toggle the menu
+  o    c   : toggle the conflicts
+  o    n   : toggle the pieces numbers
+  o    t   : toggle the pieces types
+  o    s   : toggle the score
+  o    #   : toggle the coordinates
+  o   1-9  : toggle the tiles
+  o    h   : print help
+====================================================================================================
+'''
