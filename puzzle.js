@@ -67,6 +67,23 @@ function help() {
 }
 
 
+// If a piece is used multiple times, we use a negative number
+function flag_duplicates() {
+	board_pieces_conflict = new Array();
+	for( s = 0; s < board_w*board_h; s ++)
+		board_pieces_conflict[ s ] = 0;
+	for( s = 0; s < board_w*board_h; s ++)
+		board_pieces_conflict[board_pieces[ s ]] ++;
+	for( s = 0; s < board_w*board_h; s ++) {
+		if ( board_pieces_conflict[ s ] > 1 ) {
+			for( s1 = 0; s1 < board_w*board_h; s1 ++) {
+				if (board_pieces[ s1 ] == s)
+					board_pieces[ s1 ] = -board_pieces[ s1 ];
+			}
+		}
+	}
+}
+
 function readParameters( parameters ) {
 
 	// Puzzle parameters
@@ -100,24 +117,11 @@ function readParameters( parameters ) {
 
 	if ( parameters[ "board_pieces" ] !== undefined ) {
 		board_pieces = new Array();
-		board_pieces_conflict = new Array();
-		for( s = 0; s < board_w*board_h; s ++)
-			board_pieces_conflict[ s ] = 0;
 		for( s = 0; s < board_w*board_h; s ++) {
 			board_pieces[ s ]    = parseInt(parameters[ "board_pieces" ].slice(s*3, s*3+3));
-			board_pieces_conflict[board_pieces[ s ]] ++;
 			//board_pieces[ s ]    = parseInt("0x" + parameters[ "board_pieces" ].slice(s*3, s*3+2), 16); // encoded on 3 hex for puzzles > 16x16
 		}
-		// If a piece is used multiple times, we use a negative number
-		for( s = 0; s < board_w*board_h; s ++) {
-			if ( board_pieces_conflict[ s ] > 1 ) {
-				for( s1 = 0; s1 < board_w*board_h; s1 ++) {
-					if (board_pieces[ s1 ] == s)
-						board_pieces[ s1 ] = -board_pieces[ s1 ];
-				}
-			}
-		}
-		
+		flag_duplicates();
 	}
 
 	if ( parameters[ "board_edges" ] !== undefined ) {
@@ -258,7 +262,7 @@ function readParameters( parameters ) {
 			}
 
 		}
-	
+		flag_duplicates();
 	}
 
 	//console.log("Parameters:" + parameters);
