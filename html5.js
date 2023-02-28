@@ -450,7 +450,8 @@ function build_page( action ) {
 			paste_elem.setAttribute("placeHolder", "Paste Here");
 			paste_elem.setAttribute("spellcheck", "false");
 			//paste_elem.setAttribute("onpaste", "document.pasted_text=this; setTimeout(function(){window.location.hash='e2.html'+document.pasted_text.value.replace(/(\\r\\n|\\n|\\r)/gm, \"\");window.location.reload();}, 100);");
-			paste_elem.setAttribute("onpaste", "document.pasted_text=this; setTimeout(function(){window.location.hash='#'+document.pasted_text.value.replace(/(\\r\\n|\\n|\\r)/gm, \"\");window.location.reload();}, 100);");
+			//paste_elem.setAttribute("onpaste", "document.pasted_text=this; setTimeout(function(){window.location.hash='#'+document.pasted_text.value.replace(/(\\r\\n|\\n|\\r)/gm, \"\");window.location.reload();}, 100);");
+			paste_elem.setAttribute("onpaste", "document.pasted_text=this; setTimeout(process_pasted_text, 100);");
 
 
 
@@ -1384,3 +1385,75 @@ function highlightMotif(motif_index) {
 	printScreen();
 }
 
+
+// ----- Pasted text
+function process_pasted_text() {
+
+	t = document.pasted_text.value;
+	console.log(t);
+	
+	let urlhash = "";
+
+
+	// If the beginning matches something like this:
+//  4/1  60/2  18/2  51/2  17/2   6/2   7/2  57/2  49/2   8/2   5/2  15/2  59/2  55/2  35/2   1/2
+// 23/1 125/3 118/1 135/2 195/2 115/2 182/2 205/0  63/2 133/1  85/2 113/2 219/1 181/3 122/3  50/3
+// 56/1 186/3 203/1 252/2 222/0 246/2 250/2 177/0 114/2 225/0 251/1 245/3 235/3 187/0  79/0  38/3
+// 30/1 153/0 233/1 198/3 184/1 136/0 171/3 140/0 129/3 116/1 201/3 242/0 213/1 188/0  80/2  10/3
+// 52/1  61/3  88/1  89/1 172/1 128/2 180/0 154/2 211/0 226/2 158/3 150/1 178/1 132/3 130/1  24/3
+// 12/1  98/2 216/3 207/0 224/2 208/0 104/3 134/1 167/0 189/3 199/1 197/0 255/0 206/3 200/1  40/3
+// 39/1 229/1 227/0 218/2 254/2 212/2 126/2  94/0  99/3  78/1 112/0 190/2 236/3 169/3 106/0  47/3
+// 58/1 202/0 210/0  93/3  96/1 221/2 256/0  65/2 164/1 238/3 103/2 127/1 193/1 185/0 119/2  53/3
+// 54/1 121/0 215/2 253/1 220/2 100/3  91/1 139/2 109/0 223/0 117/3 107/1 234/1 162/0 230/0  13/3
+// 41/1 123/2  90/0  87/3  75/1 120/3 102/0 161/0 131/2 232/2 228/2 166/3 175/1 155/2  83/0  45/3
+// 28/1 111/1  71/2 214/1  70/0 243/1 101/2 105/1 165/2 194/1 241/2 183/2 204/1 176/0  97/2  36/3
+// 32/1 239/0 157/3 137/0  62/2  86/1  95/0 192/1 217/2 231/2 244/2 237/2 170/3 138/0 145/3  16/3
+// 27/1  77/1 151/0 147/2 191/2 110/3  67/2 159/1  92/0 174/0 124/0 249/1 156/0  84/0  76/0  11/3
+// 33/1 209/3 146/0 149/2 148/0  66/3  73/1 179/2  69/2 142/1 108/2 144/0 141/2  68/2  81/2  42/3
+// 19/1 152/0 163/2 196/3  72/3  64/1  82/1 160/1 247/3 173/2 248/1 143/2 168/1  74/0 240/2  46/3
+//  3/0  29/0  31/0  22/0   9/0  34/0  37/0  14/0  43/0  20/0  21/0  48/0  44/0  26/0  25/0   2/3
+
+	if (t.match("[1-2 ][0-9 ][0-9]/[0-3] [1-2 ][0-9 ][0-9]/[0-3] ")) {
+
+		pieces = (
+		  'aabd/aabe/aacd/aadc/abgb/abhc/abjb/abjf/abmd/aboe/abpc/abte/abtf/abve/achb/acid/' +
+		  'ackf/acnf/acoc/acpc/acqe/acrb/acrf/acsb/acvb/adgc/adgd/adhd/adid/adof/adpc/adsd/' +
+		  'adtc/adte/aduf/adwe/aeib/aelf/aemf/aenc/aend/aepb/aepc/aepd/aeqb/aese/aete/aeue/' +
+		  'afgf/afhb/afhc/afjb/afoe/afqe/afqf/aftd/afub/afuf/afvc/afwd/ggji/ggko/ghhl/gigt/' + 
+		  'giiw/gikk/gimh/gisj/giwt/gllo/glor/gmki/gmpq/gmsp/gmtl/gnkp/gnnp/golu/gosl/gouv/' +
+		  'gpni/gqii/gqmq/grin/grjk/grtr/grus/gsgv/gsjw/gsqu/gtmr/gtnp/gtnq/gtqv/gtrk/gvvl/' +
+		  'gwqn/gwst/gwvj/gwwv/hhrp/hhru/hhun/hhwj/hiqp/hjlt/hjnt/hjqp/hjum/hkpr/hkrp/hlsn/' + 
+		  'hlsu/hmkq/hmor/hmrm/hmwu/hnlv/hour/hptw/hqkw/hsju/hskn/hssp/htrw/htvp/hukj/hunv/' + 
+		  'huql/hust/hvjs/hvrk/hwku/hwmq/hwql/hwus/iiso/ijjl/ijjm/ijjr/ijnv/ijpj/ijur/ijvv/' + 
+		  'iklq/ilir/iliw/illk/ilpr/injm/inqw/iomm/iomn/iowu/iqoo/iqor/iqwo/isou/istj/itvv/' + 
+		  'iujs/iuks/iwpm/iwqu/jklq/jkqt/jmll/jnmp/jnnv/joqt/josu/jovm/jppp/jprs/jqov/jron/' +
+		  'jskq/jtru/jttp/juou/jvmu/jvom/kknt/klwo/kmnr/kmtt/knvo/kokv/koln/koun/kpll/kpps/' +
+		  'kqmo/krvm/krvw/krwp/ksmw/ksnt/ksss/ktnl/kuvt/kuwo/kvrn/kvrt/kvul/kvwv/llwo/lmnw/' +
+		  'lmtp/lomn/loup/lplu/lqtt/lrls/lrqw/lrwv/lsnp/luqr/lvmq/lwmu/lwvv/lwvw/mmrw/mmso/' +
+		  'mmup/monp/morr/mqnt/msow/msut/mtrs/mtrv/nnns/nouq/nqoq/nqos/nqrp/nrqu/nspw/nsvp/' +
+		  'ntov/ntqv/oppr/opst/oqws/ovuw/ppvw/pqrq/prqv/psuv/qqwt/qrtr/rtus/suvu/swuw/twvw').split('/')
+
+		puzzle = "Pasted";
+		board_w = t.split('\n')[0].split('/').length-1;
+		board_h = t.split('\n').length;
+
+		let data = t.split('\n')
+			.flatMap(line => line.split(' ').filter(w => w !== '')
+			.map(w => w.split('/').map(Number)));
+
+		urlhash = 'puzzle='+puzzle+'&board_w='+board_w+'&board_h='+board_h+'&board_edges=';
+		for (let [piece, rot] of data) {
+			for (let i = 0; i < 4; i++) {
+				urlhash += pieces[piece - 1][(i + 6 - rot) % 4];
+			}
+		}
+
+		console.log(urlhash);
+	} else {
+		// The URL Hash was pasted directly
+		urlhash = t.replace(/(\\r\\n|\\n|\\r)/gm, "");
+	}
+
+	window.location.hash='#'+urlhash;
+	window.location.reload();
+}
